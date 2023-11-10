@@ -5,42 +5,50 @@ class User extends Model {}
 
 User.init(
 	{
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true
-		},
-		name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [2, 30]
-			}
-		},
-		email: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			unique: true,
-			validate: {
-				isEmail: true
-			}
-		},
-		password: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [8]
-			}
+	  id: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		primaryKey: true,
+		autoIncrement: true
+	  },
+	  name: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		validate: {
+		  len: [2, 30]
 		}
+	  },
+	  email: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		unique: true,
+		validate: {
+		  isEmail: true
+		}
+	  },
+	  password: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		validate: {
+		  len: [8]
+		}
+	  }, 
+	  membership_type: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		defaultValue: 'basic',
+		validate: {
+		  isIn: [['basic', '24_hour', 'all_access']]
+		}
+	  }
 	},
 	{
-		sequelize,
-		timestamps: false,
-		freezeTableName: true,
-		underscored: true,
-		modelName: 'user'
+	  sequelize,
+	  timestamps: false,
+	  freezeTableName: true,
+	  underscored: true,
+	  modelName: 'user'
 	}
-)
+  );
 
 module.exports = User
