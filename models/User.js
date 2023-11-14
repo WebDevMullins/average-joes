@@ -32,7 +32,27 @@ User.init(
 			validate: {
 				len: [8]
 			}
-		}
+		},
+		membership_tier_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			// defaultValue: 'Basic',
+			// validate: {
+			//   isIn: [['basic', '24_hour', 'all_access']]
+			// },
+			reference: {
+				model: 'membership_tier',
+				key: 'id'
+			}
+		  },
+		  membership_plan_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			references: {
+				model: 'membership_plan',
+				key: 'id'
+			}
+		  }
 	},
 	{
 		sequelize,

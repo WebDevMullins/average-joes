@@ -26,6 +26,14 @@ MembershipTier.init(
 		benefits: {
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		trainer_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			references: {
+				model: 'trainer',
+				key: 'id'
+			}
 		}
 	},
 	{
