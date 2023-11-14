@@ -6,6 +6,6 @@ const joinRoutes = require('./joinRoutes')
 
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
-router.use('/join', joinRoutes)
+router.use('/signup', joinRoutes)
 
 module.exports = router;
