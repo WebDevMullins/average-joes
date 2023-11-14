@@ -1,0 +1,38 @@
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../config/connection')
+
+class Trainer extends Model {}
+
+Trainer.init(
+	{
+		id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			primaryKey: true,
+			autoIncrement: true
+		},
+		f_name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: [2, 30]
+			}
+		},
+		l_name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: [2, 30]
+			}
+		}
+	},
+	{
+		sequelize,
+		timestamps: false,
+		freezeTableName: true,
+		underscored: true,
+		modelName: 'trainer'
+	}
+)
+
+module.exports = Trainer
