@@ -1,5 +1,6 @@
-const User = require('./User')
+const User = require('./User');
+const Trainer = require('./Trainer');
+const MembershipTier = require('./MembershipTier');
+const MembershipPlan = require('./MembershipPlan');
 
-
-
-module.exports = { User }
+module.exports = { User, Trainer, MembershipTier, MembershipPlan }
