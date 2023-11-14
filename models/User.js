@@ -1,7 +1,11 @@
 const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
 
-class User extends Model {}
+class User extends Model {
+	checkPassword(loginPw) {
+		return bcrypt.compareSync(loginPw, this.password)
+	}
+}
 
 User.init(
 	{
@@ -44,17 +48,27 @@ User.init(
 				model: 'membership_tier',
 				key: 'id'
 			}
-		  },
-		  membership_plan_id: {
+		},
+		membership_plan_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references: {
 				model: 'membership_plan',
 				key: 'id'
 			}
-		  }
+		}
 	},
 	{
+		hooks: {
+			beforeCreate: async (newUserData) => {
+				newUserData.password = await bcrypt.hash(newUserData.password, 10)
+				return newUserData
+			},
+			beforeUpdate: async (newUserData) => {
+				newUserData.password = await bcrypt.hash(newUserData.password, 10)
+				return newUserData
+			}
+		},
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
