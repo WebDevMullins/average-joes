@@ -1,27 +1,35 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Average Joe's 2.0</title>
-</head>
-<body>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="header">
-        <div class="navbar">
-            <div class="home">Average Joe's 2.0</div>
-            <div class="tabs">
-                <div class="join">JOIN</div>
-                <div class="classes">CLASSES</div>
-                <div class="free_pass">FREE PASS</div>
-            </div>
-            </div>
+      <h1>Average Joe's 2.0</h1>
+      <nav class="navbar">
+        <a class="home" href="/">HOME</a>
+        <a class="join" href="/join">JOIN</a>
+        <a class="classes" href="/classes">CLASSES</a>
+        <a class="free_pass" href="/free-pass">FREE PASS</a>
+      </nav>
     </header>
     <main>
-        {{!-- insert body here --}}
-        {{body}}
+      {{{body}}}
     </main>
     <footer class="grid grid-cols-3">
-        <div class="home"></div>
-        <div class="join"></div>
-        <div class="policy"></div>
+      <div class="home"></div>
+      <div class="join"></div>
+      <div class="policy"></div>
     </footer>
-</body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"
+    ></script>
+  </body>
 </html>
