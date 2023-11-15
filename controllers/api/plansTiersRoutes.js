@@ -1,9 +1,17 @@
 const router = require('express').Router();
-const { MembershipTier, MembershipPlan } = require('../../models');
+const { MembershipTier, MembershipPlan, Trainer } = require('../../models');
 
 router.get('/tiers', async (req, res) => {
     try {
-        const tierData = await MembershipTier.findAll();
+        const tierData = await MembershipTier.findAll({
+            include: [{
+                model: Trainer
+            }]
+        });
+        //     include: [{
+        //       model: Trainer
+        //     }]
+        //   });
         res.status(200).json(tierData);
     } catch(err) {
         res.status(400).json(err);
