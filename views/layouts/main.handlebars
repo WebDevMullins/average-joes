@@ -17,6 +17,9 @@
     <main class='max-w-screen-xl mx-auto'>
       {{{body}}}
     </main>
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
     <footer class="grid grid-cols-3">
       <div class="home"></div>
       <div class="join"></div>
