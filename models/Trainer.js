@@ -24,6 +24,14 @@ Trainer.init(
 			validate: {
 				len: [2, 30]
 			}
+		},
+		specialty_classes: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		certifications: {
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	},
 	{
