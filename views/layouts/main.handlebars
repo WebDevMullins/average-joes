@@ -10,21 +10,11 @@
       rel="stylesheet"
     />
   </head>
-  <body class="">
-    <header class="header flex flex-row justify-between">
-      <h1>Average Joe's 2.0</h1>
-      <nav class="navbar flex flex-row w-96 ">
-        <a class="home" href="/">HOME</a>
-        {{#if loggedIn}}
-         <button id="logout" class="btn-no-style">Logout</button>
-        {{else}}
-        <a class="join" href="/signup">JOIN</a>
-        {{/if}}
-        <a class="classes" href="/classes">CLASSES</a>
-        <a class="free_pass" href="/free-pass">FREE PASS</a>
-      </nav>
+  <body class='flex flex-col mx-auto'>
+    <header class="header">
+      {{> navbar}}
     </header>
-    <main>
+    <main class='max-w-screen-xl mx-auto'>
       {{{body}}}
     </main>
     {{#if loggedIn}}
