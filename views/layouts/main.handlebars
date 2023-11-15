@@ -10,17 +10,11 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class='flex flex-col mx-auto'>
     <header class="header">
-      <h1>Average Joe's 2.0</h1>
-      <nav class="navbar">
-        <a class="home" href="/">HOME</a>
-        <a class="join" href="/join">JOIN</a>
-        <a class="classes" href="/classes">CLASSES</a>
-        <a class="free_pass" href="/free-pass">FREE PASS</a>
-      </nav>
+      {{> navbar}}
     </header>
-    <main>
+    <main class='max-w-screen-xl mx-auto'>
       {{{body}}}
     </main>
     <footer class="grid grid-cols-3">
