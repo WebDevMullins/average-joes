@@ -12,6 +12,10 @@ const planData = [
     {
         name: 'Full Year',
         duration: 12
+    },
+    {
+        name: 'New Member',
+        duration: 12
     }
 ];
 

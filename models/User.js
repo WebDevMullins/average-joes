@@ -40,7 +40,8 @@ User.init(
     },
     membership_tier_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 4,
+      // allowNull: false,
       // defaultValue: 'Basic',
       // validate: {
       //   isIn: [['basic', '24_hour', 'all_access']]
@@ -52,7 +53,8 @@ User.init(
     },
     membership_plan_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
+      defaultValue: 4,
       references: {
         model: "membership_plan",
         key: "id",
@@ -60,16 +62,16 @@ User.init(
     },
   },
   {
-    hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-      beforeUpdate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-    },
+    // hooks: {
+    //   beforeCreate: async (newUserData) => {
+    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
+    //     return newUserData;
+    //   },
+    //   beforeUpdate: async (newUserData) => {
+    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
+    //     return newUserData;
+    //   },
+    // },
     sequelize,
     timestamps: false,
     freezeTableName: true,
