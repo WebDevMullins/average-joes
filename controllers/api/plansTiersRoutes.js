@@ -8,11 +8,11 @@ router.get('/tiers', async (req, res) => {
                 model: Trainer
             }]
         });
-        //     include: [{
-        //       model: Trainer
-        //     }]
-        //   });
-        res.status(200).json(tierData);
+        const tier = tierData.map((tier) => tier.get({ plain: true }));
+        console.log(tier);
+        console.log('---------------------');
+        res.render('tier', tier);
+        // res.status(200).json(tierData);
     } catch(err) {
         res.status(400).json(err);
     };
