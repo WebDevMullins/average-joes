@@ -873,3 +873,7 @@ video {
     padding: 0px;
   }
 }
+
+.weights-image {
+  background-image: url(../images/weights.jpeg);
+}
