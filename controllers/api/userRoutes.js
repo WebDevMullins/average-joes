@@ -22,8 +22,6 @@ router.post("/signup", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      membership_tier_id: 4,
-      membership_plan_id: 4,
     });
 
 		req.session.save(() => {
