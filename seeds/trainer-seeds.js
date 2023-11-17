@@ -23,13 +23,6 @@ const trainerData = [
     certifications:
       "CrossFit Level 99.5 Trainer, Certified Nutrition Specialist (CNS)",
   },
-  {
-    f_name: "No",
-    l_name: "Trainer",
-    specialty_classes: "New Member Does Not Have Trainer",
-    certifications:
-      "None",
-  },
 ];
 
 const seedTrainer = () => Trainer.bulkCreate(trainerData);

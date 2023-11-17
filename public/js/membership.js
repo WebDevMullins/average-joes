@@ -13,7 +13,7 @@ const membershipFormHandler = async (event) => {
 		headers: { 'Content-Type': 'application/json' }
 	})
 	if (response.ok) {
-		document.location.replace('/')
+		document.location.replace('/profile')
 	} else {
 		console.log(Error)
 		alert('Failed to update membership.')
