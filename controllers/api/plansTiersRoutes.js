@@ -30,22 +30,18 @@ router.get('/plans', async (req, res) => {
 
 router.get('/', async (req, res) => {
 	try {
-		// Get all membership plans and JOIN with tiers
+		// Get all membership plans
 		const membershipData = await MembershipPlan.findAll({
-			attributes: ['name', 'duration'],
-			where: {
-				name: { [Op.not]: 'New Member' }
-			},
-			// include: [{ MembershipTier, attributes: ['name'] }]
+			attributes: ['id', 'name', 'duration']
 		})
+		// Get all tiers
 		const membershipTierData = await MembershipTier.findAll({
-			attributes: ['name'],
-						// include: [{ MembershipTier, attributes: ['name'] }]
+			attributes: ['id', 'name']
 		})
-
 
 		// Serialize data
 		const membership = membershipData.map((membership) => membership.get({ plain: true }))
+
 		const membershipTier = membershipTierData.map((membership) => membership.get({ plain: true }))
 		// Render template with membership data
 		res.render('membership', { membership, membershipTier })

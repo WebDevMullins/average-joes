@@ -74,7 +74,7 @@ router.put('/', async (req, res) => {
 	try {
 		const userData = await User.update(
 			{ membership_plan_id: req.body.plan_id, membership_tier_id: req.body.tier_id },
-			{ where: { id: req.session.id } }
+			{ where: { id: req.session.user_id } }
 		)
 
 		if (!userData) {
