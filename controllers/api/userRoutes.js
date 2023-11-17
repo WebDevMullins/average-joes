@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 router.post("/signup", async (req, res) => {
   try {
     const dbUserData = await User.create({
-      name: req.body.email,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       membership_tier_id: 4,
