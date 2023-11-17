@@ -1,8 +1,8 @@
 const membershipFormHandler = async (event) => {
 	event.preventDefault()
 
-	const plan_id = document.getElementById('#planId').value.trim()
-	const tier_id = document.getElementById('#tierId').value.trim()
+	const plan_id = document.getElementById('planId').value.trim()
+	const tier_id = document.getElementById('tierId').value.trim()
 
 	const response = await fetch(`/api/users/`, {
 		method: 'PUT',
@@ -12,10 +12,10 @@ const membershipFormHandler = async (event) => {
 		}),
 		headers: { 'Content-Type': 'application/json' }
 	})
-
 	if (response.ok) {
 		document.location.replace('/')
 	} else {
+		console.log(Error)
 		alert('Failed to update membership.')
 	}
 }
