@@ -18,13 +18,7 @@ const data = [
     monthlyFee: 100,
     benefits: "Unlimited Classes",
     trainer_id: 3,
-  },
-  {
-    name: "None",
-    monthlyFee: 0,
-    benefits: "None",
-    trainer_id: 4,
-  },
+  }
 ];
 
 const seedTier = () => MembershipTier.bulkCreate(data)

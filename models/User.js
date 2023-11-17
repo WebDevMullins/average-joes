@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
 class User extends Model {
-	checkPassword(loginPw) {
-		// return bcrypt.compareSync(loginPw, this.password)
-		return loginPw === this.password
-	}
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
 }
 
 User.init(
@@ -40,12 +40,7 @@ User.init(
     },
     membership_tier_id: {
       type: DataTypes.INTEGER,
-      defaultValue: 4,
-      // allowNull: false,
-      // defaultValue: 'Basic',
-      // validate: {
-      //   isIn: [['basic', '24_hour', 'all_access']]
-      // },
+      allowNull: true,
       reference: {
         model: "membership_tier",
         key: "id",
@@ -53,8 +48,7 @@ User.init(
     },
     membership_plan_id: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
-      defaultValue: 4,
+      allowNull: true,
       references: {
         model: "membership_plan",
         key: "id",
@@ -62,16 +56,16 @@ User.init(
     },
   },
   {
-    // hooks: {
-    //   beforeCreate: async (newUserData) => {
-    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-    //     return newUserData;
-    //   },
-    //   beforeUpdate: async (newUserData) => {
-    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-    //     return newUserData;
-    //   },
-    // },
+    hooks: {
+      beforeCreate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      beforeUpdate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,

@@ -4,37 +4,27 @@ const userData = [
 	{
 		name: 'John Doe',
 		email: 'john@example.com',
-		password: 'password123',
-		membership_tier_id: 1,
-		membership_plan_id: 1
+		password: 'password123'
 	},
 	{
 		name: 'Jane Doe',
 		email: 'jane@example.com',
-		password: 'securepass',
-		membership_tier_id: 1,
-		membership_plan_id: 1
+		password: 'securepass'
 	},
 	{
 		name: 'Bob Smith',
 		email: 'bob@example.com',
-		password: 'bobspassword',
-		membership_tier_id: 1,
-		membership_plan_id: 1
+		password: 'bobspassword'
 	},
 	{
 		name: 'Alice Johnson',
 		email: 'alice@example.com',
-		password: 'alicepass',
-		membership_tier_id: 1,
-		membership_plan_id: 1
+		password: 'alicepass'
 	},
 	{
 		name: 'Charlie Brown',
 		email: 'charlie@example.com',
-		password: 'charliepass',
-		membership_tier_id: 1,
-		membership_plan_id: 1
+		password: 'charliepass'
 	}
 ]
 
