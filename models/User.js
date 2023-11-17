@@ -37,23 +37,23 @@ User.init(
 			validate: {
 				len: [8]
 			}
-		},
-		plan_id: {
-			type: DataTypes.INTEGER,
-			allowNull: true,
-			reference: {
-				model: 'membership_plan',
-				key: 'id'
-			}
-		},
-		tier_id: {
-			type: DataTypes.INTEGER,
-			allowNull: true,
-			references: {
-				model: 'membership_tier',
-				key: 'id'
-			}
 		}
+		// plan_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	allowNull: true,
+		// 	reference: {
+		// 		model: 'membership_plan',
+		// 		key: 'id'
+		// 	}
+		// },
+		// tier_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	allowNull: true,
+		// 	references: {
+		// 		model: 'membership_tier',
+		// 		key: 'id'
+		// 	}
+		// }
 	},
 	{
 		hooks: {

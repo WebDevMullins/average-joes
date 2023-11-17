@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User } = require('../../models')
+const { User, Member } = require('../../models')
 
 router.post('/', async (req, res) => {
 	try {
@@ -50,6 +50,7 @@ router.post('/login', async (req, res) => {
 			return
 		}
 		req.session.user_id = userData.id
+		req.session.user_email = userData.email
 		req.session.logged_in = true
 
 		req.session.save(() => {
@@ -85,6 +86,28 @@ router.put('/', async (req, res) => {
 		res.status(200).json(userData)
 	} catch (err) {
 		res.status(500).json(err)
+	}
+})
+
+router.post('/member', async (req, res) => {
+	try {
+		const memberData = await Member.create({
+			f_name: req.body.fName,
+			l_name: req.body.lName,
+			phone: req.body.phone,
+			dob: req.body.dob,
+			address: req.body.address,
+			city: req.body.city,
+			state: req.body.state,
+			email: req.session.user_email,
+			plan_id: req.body.planId,
+			tier_id: req.body.tierId
+		})
+
+		res.status(200).json(memberData)
+	} catch (err) {
+		console.log(err)
+		res.status(500).json({ message: 'cannot create user at this time' })
 	}
 })
 

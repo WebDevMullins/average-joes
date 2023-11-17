@@ -1,6 +1,6 @@
-<section class='mt-8 bg-white dark:bg-gray-900'>
+{{!-- <section class='mt-8 bg-white dark:bg-gray-900'>
 	<div class='py-8 px-4 mx-auto max-w-2xl lg:py-16'>
-		<h2 class='mb-8 text-2xl font-bold text-gray-900 dark:text-white text-center'>Update Membership</h2>
+		<h2 class='mb-8 text-2xl font-bold text-gray-900 dark:text-white text-center'>Create Membership</h2>
 		<form class='membership-form'>
 			<div class='grid gap-4 sm:grid-cols-2 sm:gap-6'>
 				<div>
@@ -35,6 +35,174 @@
 				Update Membership
 			</button>
 			</div>
+		</form>
+	</div>
+</section> --}}
+<section class='mt-8 bg-white dark:bg-gray-900'>
+	<div class='py-8 px-4 mx-auto max-w-2xl lg:py-16'>
+		<form class='membership-form'>
+			{{! Names }}
+			<div class='grid md:grid-cols-2 md:gap-6'>
+				{{! First Name }}
+				<div class='relative z-0 w-full mb-6 group'>
+					<input
+						type='text'
+						name='f_name'
+						id='f_name'
+						class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+						placeholder=' '
+						required
+					/>
+					<label
+						for='f_name'
+						class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+					>First name</label>
+				</div>
+				{{! Last Name }}
+				<div class='relative z-0 w-full mb-6 group'>
+					<input
+						type='text'
+						name='l_name'
+						id='l_name'
+						class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+						placeholder=' '
+						required
+					/>
+					<label
+						for='l_name'
+						class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+					>Last name</label>
+				</div>
+			</div>
+			{{! Phone and DOB }}
+			<div class='grid md:grid-cols-2 md:gap-6'>
+				{{! Phone }}
+				<div class='relative z-0 w-full mb-6 group'>
+					<input
+						type='tel'
+						pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+						name='phone'
+						id='phone'
+						class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+						placeholder=' '
+						required
+					/>
+					<label
+						for='phone'
+						class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+					>Phone number (123-456-7890)</label>
+				</div>
+				{{! DOB }}
+				<div class='relative z-0 w-full mb-6 group'>
+					<input
+						type='date'
+						pattern='[0-9]{2}/[0-9]{2}/[0-9]{4}'
+						name='dob'
+						id='dob'
+						class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+						placeholder=' '
+						required
+					/>
+					<label
+						for='dob'
+						class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+					>Birth Date (mm/dd/yyy)</label>
+				</div>
+			</div>
+			{{! Address }}
+			<div class='relative z-0 w-full mb-6 group'>
+				<input
+					type='address'
+					name='address'
+					id='address'
+					class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+					placeholder=' '
+					required
+				/>
+				<label
+					for='address'
+					class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+				>Address</label>
+			</div>
+			<div class='grid md:grid-cols-2 md:gap-6'>
+				{{! City }}
+				<div class='relative z-0 w-full mb-6 group'>
+					<input
+						type='text'
+						name='city'
+						id='city'
+						class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+						placeholder=' '
+						required
+					/>
+					<label
+						for='city'
+						class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+					>City</label>
+				</div>
+				{{! State }}
+				<div class='relative z-0 w-full mb-6 group'>
+					<input
+						type='text'
+						name='state'
+						id='state'
+						class='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+						placeholder=' '
+						required
+					/>
+					<label
+						for='state'
+						class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+					>State</label>
+				</div>
+			</div>
+			<div class='mt-4 grid md:grid-cols-2 md:gap-6'>
+			{{! Plans }}
+			<div class='relative z-0 w-full mb-6 group'>
+				<select
+					type='text'
+					name='planId'
+					id='planId'
+					class='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
+					placeholder=''
+					required
+				/>
+						{{#each plan}}
+							<option value={{id}}>{{name}}</option>
+						{{/each}}
+					</select>
+
+				<label
+					for='planId'
+					class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+				>Plan</label>
+			</div>
+			{{! Tiers }}
+			<div class='relative z-0 w-full mb-6 group'>
+				<select
+					type='text'
+					name='tierId'
+					id='tierId'
+					class='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
+					placeholder=''
+					required
+				/>
+						{{#each tier}}
+							<option value={{id}}>{{name}}</option>
+						{{/each}}
+					</select>
+
+				<label
+					for='tierId'
+					class='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+				>Tier</label>
+			</div>
+			</div>
+			{{! Submit Button }}
+			<button
+				type='submit'
+				class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+			>Submit</button>
 		</form>
 	</div>
 </section>

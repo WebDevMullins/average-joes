@@ -1,4 +1,5 @@
 const User = require('./User')
+const Member = require('./Member')
 const Trainer = require('./Trainer')
 const MembershipTier = require('./MembershipTier')
 const MembershipPlan = require('./MembershipPlan')
@@ -11,24 +12,24 @@ Trainer.hasOne(MembershipTier, {
 	foreignKey: 'trainer_id'
 })
 
-User.belongsTo(MembershipPlan, {
+Member.belongsTo(MembershipPlan, {
 	foreignKey: 'plan_id',
 	as: 'plan'
 })
 
-MembershipPlan.hasOne(User, {
+MembershipPlan.hasOne(Member, {
 	foreignKey: 'plan_id',
 	as: 'plan'
 })
 
-User.belongsTo(MembershipTier, {
+Member.belongsTo(MembershipTier, {
 	foreignKey: 'tier_id',
 	as: 'tier'
 })
 
-MembershipTier.hasOne(User, {
+MembershipTier.hasOne(Member, {
 	foreignKey: 'tier_id',
 	as: 'tier'
 })
 
-module.exports = { User, Trainer, MembershipTier, MembershipPlan }
+module.exports = { User, Trainer, Member, MembershipTier, MembershipPlan }

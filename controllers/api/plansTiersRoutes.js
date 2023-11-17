@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const { Op } = require('sequelize')
 const { MembershipTier, MembershipPlan, Trainer, User } = require('../../models')
 
 router.get('/tiers', async (req, res) => {
@@ -31,20 +30,20 @@ router.get('/plans', async (req, res) => {
 router.get('/', async (req, res) => {
 	try {
 		// Get all membership plans
-		const membershipData = await MembershipPlan.findAll({
+		const planData = await MembershipPlan.findAll({
 			attributes: ['id', 'name', 'duration']
 		})
 		// Get all tiers
-		const membershipTierData = await MembershipTier.findAll({
+		const tierData = await MembershipTier.findAll({
 			attributes: ['id', 'name']
 		})
 
 		// Serialize data
-		const membership = membershipData.map((membership) => membership.get({ plain: true }))
+		const plan = planData.map((plan) => plan.get({ plain: true }))
 
-		const membershipTier = membershipTierData.map((membership) => membership.get({ plain: true }))
+		const tier = tierData.map((tier) => tier.get({ plain: true }))
 		// Render template with membership data
-		res.render('membership', { membership, membershipTier })
+		res.render('membership', { plan, tier })
 		// res.json(membership)
 	} catch (err) {
 		// Handle server error
