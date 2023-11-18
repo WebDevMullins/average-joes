@@ -5,11 +5,11 @@ class Member extends Model {}
 
 Member.init(
 	{
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			autoIncrement: true
-		},
+		// id: {
+		// 	type: DataTypes.INTEGER,
+		// 	allowNull: false,
+		// 	autoIncrement: true
+		// },
 		f_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -69,6 +69,11 @@ Member.init(
 				model: 'user',
 				key: 'email'
 			}
+		},
+		membershipStaus: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+			defaultValue: 0
 		},
 		plan_id: {
 			type: DataTypes.INTEGER,

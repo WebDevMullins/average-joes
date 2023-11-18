@@ -24,6 +24,7 @@ router.post('/signup', async (req, res) => {
 			password: req.body.password
 		})
 
+		req.session.user_email = req.body.email
 		req.session.save(() => {
 			req.session.logged_in = true
 
@@ -37,25 +38,32 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
 	try {
-		const userData = await User.findOne({ where: { email: req.body.email } })
+		const userData = await User.findByPk(req.body.email)
 		if (!userData) {
 			res.status(400).json({ message: 'Incorrect email or password, please try again' })
 			return
 		}
 
 		const validPassword = await userData.checkPassword(req.body.password)
-		console.log(validPassword)
+
 		if (!validPassword) {
 			res.status(400).json({ message: 'Incorrect email or password, please try again' })
 			return
 		}
-		req.session.user_id = userData.id
+
+		const member = await Member.findByPk(req.body.email)
+
+		if (member && member.membershipStatus) {
+			req.session.is_member = true
+		}
+
 		req.session.user_email = userData.email
 		req.session.logged_in = true
 
 		req.session.save(() => {
 			res.json({ user: userData, message: 'You are now logged in!' })
 		})
+		console.log('Session email ', req.session.user_email)
 	} catch (err) {
 		res.status(400).json(err)
 	}
@@ -90,6 +98,7 @@ router.put('/', async (req, res) => {
 })
 
 router.post('/member', async (req, res) => {
+	console.log(req.session.user_email)
 	try {
 		const memberData = await Member.create({
 			f_name: req.body.fName,
@@ -100,10 +109,11 @@ router.post('/member', async (req, res) => {
 			city: req.body.city,
 			state: req.body.state,
 			email: req.session.user_email,
+			membershipStatus: true,
 			plan_id: req.body.planId,
 			tier_id: req.body.tierId
 		})
-
+		req.session.is_member = true
 		res.status(200).json(memberData)
 	} catch (err) {
 		console.log(err)
