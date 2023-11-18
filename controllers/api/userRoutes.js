@@ -1,21 +1,6 @@
 const router = require('express').Router()
 const { User, Member } = require('../../models')
 
-router.post('/', async (req, res) => {
-	try {
-		const userData = await User.create(req.body)
-
-		req.session.user_id = userData.id
-		req.session.logged_in = true
-
-		req.session.save(() => {
-			res.status(200).json(userData)
-		})
-	} catch (err) {
-		res.status(400).json(err)
-	}
-})
-///
 router.post('/signup', async (req, res) => {
 	try {
 		const dbUserData = await User.create({
@@ -25,9 +10,9 @@ router.post('/signup', async (req, res) => {
 		})
 
 		req.session.user_email = req.body.email
-		req.session.save(() => {
-			req.session.logged_in = true
+		req.session.logged_in = true
 
+		req.session.save(() => {
 			res.status(200).json(dbUserData)
 		})
 	} catch (err) {
@@ -56,6 +41,7 @@ router.post('/login', async (req, res) => {
 		if (member && member.membershipStatus) {
 			req.session.is_member = true
 		}
+		console.log(req.session.is_member)
 
 		req.session.user_email = userData.email
 		req.session.logged_in = true
@@ -63,7 +49,6 @@ router.post('/login', async (req, res) => {
 		req.session.save(() => {
 			res.json({ user: userData, message: 'You are now logged in!' })
 		})
-		console.log('Session email ', req.session.user_email)
 	} catch (err) {
 		res.status(400).json(err)
 	}
@@ -94,30 +79,6 @@ router.put('/', async (req, res) => {
 		res.status(200).json(userData)
 	} catch (err) {
 		res.status(500).json(err)
-	}
-})
-
-router.post('/member', async (req, res) => {
-	console.log(req.session.user_email)
-	try {
-		const memberData = await Member.create({
-			f_name: req.body.fName,
-			l_name: req.body.lName,
-			phone: req.body.phone,
-			dob: req.body.dob,
-			address: req.body.address,
-			city: req.body.city,
-			state: req.body.state,
-			email: req.session.user_email,
-			membershipStatus: true,
-			plan_id: req.body.planId,
-			tier_id: req.body.tierId
-		})
-		req.session.is_member = true
-		res.status(200).json(memberData)
-	} catch (err) {
-		console.log(err)
-		res.status(500).json({ message: 'cannot create user at this time' })
 	}
 })
 

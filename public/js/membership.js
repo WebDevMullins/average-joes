@@ -10,8 +10,9 @@ const membershipFormHandler = async (event) => {
 	const state = document.getElementById('state').value.trim()
 	const planId = document.getElementById('planId').value.trim()
 	const tierId = document.getElementById('tierId').value.trim()
+	const membershipStatus = true
 
-	const response = await fetch(`/api/users/member`, {
+	const response = await fetch(`/api/membership`, {
 		method: 'POST',
 		body: JSON.stringify({
 			fName,
@@ -21,6 +22,7 @@ const membershipFormHandler = async (event) => {
 			address,
 			city,
 			state,
+			membershipStatus,
 			planId,
 			tierId
 		}),

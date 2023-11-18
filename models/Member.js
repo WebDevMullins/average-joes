@@ -70,10 +70,8 @@ Member.init(
 				key: 'email'
 			}
 		},
-		membershipStaus: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-			defaultValue: 0
+		membershipStatus: {
+			type: DataTypes.BOOLEAN
 		},
 		plan_id: {
 			type: DataTypes.INTEGER,
