@@ -8,7 +8,6 @@ Member.init(
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-			primaryKey: true,
 			autoIncrement: true
 		},
 		f_name: {
@@ -64,6 +63,7 @@ Member.init(
 		},
 		email: {
 			type: DataTypes.STRING,
+			primaryKey: true,
 			allowNull: false,
 			references: {
 				model: 'user',

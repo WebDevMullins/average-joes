@@ -13,7 +13,6 @@ User.init(
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-			primaryKey: true,
 			autoIncrement: true
 		},
 		name: {
@@ -26,6 +25,7 @@ User.init(
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			primaryKey: true,
 			unique: true,
 			validate: {
 				isEmail: true
@@ -38,22 +38,6 @@ User.init(
 				len: [8]
 			}
 		}
-		// plan_id: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: true,
-		// 	reference: {
-		// 		model: 'membership_plan',
-		// 		key: 'id'
-		// 	}
-		// },
-		// tier_id: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: true,
-		// 	references: {
-		// 		model: 'membership_tier',
-		// 		key: 'id'
-		// 	}
-		// }
 	},
 	{
 		hooks: {

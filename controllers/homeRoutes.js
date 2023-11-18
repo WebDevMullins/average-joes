@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Project, User, MembershipPlan, MembershipTier, Trainer } = require('../models')
+const { Project, User, MembershipPlan, MembershipTier, Trainer, Member } = require('../models')
 const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
@@ -38,8 +38,8 @@ router.get('/project/:id', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
 	try {
 		// Find the logged in user based on the session ID
-		const userData = await User.findByPk(req.session.user_id, {
-			attributes: ['name', 'email'],
+		const userData = await Member.findByPk(req.session.user_email, {
+			attributes: { exclude: ['id'] },
 			include: [
 				{ model: MembershipPlan, attributes: ['name'], as: 'plan' },
 				{

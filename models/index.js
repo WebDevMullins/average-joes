@@ -4,6 +4,13 @@ const Trainer = require('./Trainer')
 const MembershipTier = require('./MembershipTier')
 const MembershipPlan = require('./MembershipPlan')
 
+Member.hasOne(User, {
+	foreignKey: 'email'
+})
+User.belongsTo(Member, {
+	foreignKey: 'email'
+})
+
 MembershipTier.belongsTo(Trainer, {
 	foreignKey: 'trainer_id'
 })
