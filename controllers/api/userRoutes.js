@@ -16,16 +16,16 @@ router.post('/', async (req, res) => {
 	}
 })
 ///
-router.post("/signup", async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    });
+router.post('/signup', async (req, res) => {
+	try {
+		const dbUserData = await User.create({
+			name: req.body.name,
+			email: req.body.email,
+			password: req.body.password
+		})
 
 		req.session.save(() => {
-			req.session.loggedIn = true
+			req.session.logged_in = true
 
 			res.status(200).json(dbUserData)
 		})
@@ -74,7 +74,7 @@ router.put('/', async (req, res) => {
 	try {
 		const userData = await User.update(
 			{ membership_plan_id: req.body.plan_id, membership_tier_id: req.body.tier_id },
-			{ where: { id: req.session.id } }
+			{ where: { id: req.session.user_id } }
 		)
 
 		if (!userData) {
