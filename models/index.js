@@ -3,6 +3,7 @@ const Member = require('./Member')
 const Trainer = require('./Trainer')
 const MembershipTier = require('./MembershipTier')
 const MembershipPlan = require('./MembershipPlan')
+const Schedule = require('./Schedule')
 
 Member.hasOne(User, {
 	foreignKey: 'email'
@@ -39,4 +40,12 @@ MembershipTier.hasOne(Member, {
 	as: 'tier'
 })
 
-module.exports = { User, Trainer, Member, MembershipTier, MembershipPlan }
+Trainer.hasMany(Schedule, {
+	foreignKey: 'trainer_id'
+})
+
+Schedule.belongsTo(Trainer, {
+	foreignKey: 'trainer_id'
+})
+
+module.exports = { User, Trainer, Member, MembershipTier, MembershipPlan, Schedule }

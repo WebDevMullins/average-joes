@@ -3,6 +3,7 @@ const seedUsers = require('./user-seeds')
 const seedTrainers = require('./trainer-seeds');
 const seedMemberShipPlan = require('./membershipPlan-seeds');
 const seedTier = require('./membershipTier-seeds');
+const seedSchedule = require('./schedule-seeds');
 
 const seedDatabase = async () => {
 	await sequelize.sync({ force: true })
@@ -19,6 +20,9 @@ const seedDatabase = async () => {
 
 	await seedUsers()
 	console.log('\n----- USERS SEEDED -----\n')
+
+	await seedSchedule()
+	console.log('\n----- SCHEDULE SEEDED -----\n')
 
 	process.exit(0)
 }
