@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { MembershipPlan, MembershipTier, Trainer, Member } = require('../models')
+const { MembershipPlan, MembershipTier, Trainer, Member, User } = require('../models')
 const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
@@ -30,6 +30,7 @@ router.get('/profile', withAuth, async (req, res) => {
 		const userData = await Member.findByPk(req.session.user_email, {
 			attributes: { exclude: ['id'] },
 			include: [
+				{ model: User, attributes: ['name'] },
 				{ model: MembershipPlan, attributes: ['name'], as: 'plan' },
 				{
 					model: MembershipTier,
@@ -54,7 +55,7 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
 	// If the user is already logged in, redirect the request to another route
 	if (req.session.logged_in) {
-		res.redirect('/profile')
+		res.redirect('/')
 		return
 	}
 
