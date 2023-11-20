@@ -1,7 +1,9 @@
-<section class='bg-white dark:bg-gray-900'>
+<section>
 	<div class='py-8 px-4 mx-auto max-w-2xl lg:py-16'>
 		<h2 class='pb-16 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white'>Become a Member</h2>
-		<form class='membership-form'>
+		<div class='bg-gray-50 border rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:border'>
+
+		<form class='membership-form p-6'>
 			{{! Names }}
 			<div class='grid md:grid-cols-2 md:gap-6'>
 				{{! First Name }}
@@ -124,7 +126,7 @@
 					type='text'
 					name='planId'
 					id='planId'
-					class='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
+					class='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
 					placeholder=''
 					required
 				/>
@@ -144,7 +146,7 @@
 					type='text'
 					name='tierId'
 					id='tierId'
-					class='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
+					class='block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer'
 					placeholder=''
 					required
 				/>
@@ -166,6 +168,8 @@
 			>Submit</button>
 		</form>
 	</div>
+		</div>
+
 </section>
 
 <script src='/js/membership.js'></script>
