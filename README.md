@@ -28,22 +28,29 @@ To get a local copy up and running follow these simple steps.
 
 npm install
 Installation
-Clone the repo Copy code git clone https://github.com/your_username_/Project-Name.git Install NPM packages Copy code npm install Enter your API keys in .env Copy code DB_NAME='db_gym' DB_USER='root' DB_PW='root'
+Clone the repo Copy code git clone https://github.com/WebDevMullins/average-joes Install NPM packages Copy code npm install Enter your API keys in .env Copy code DB_NAME='db_gym' DB_USER='root' DB_PW='root'
 
 ### Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples, and demos work well in this space. You may also link to more resources.
+GitHub- https://github.com/WebDevMullins/average-joes
+
+![Video guide] https://drive.google.com/file/d/1Bv-VhVX7c2o0p6TJycRB0Yxbhc3c00GO/view
 
 ### Roadmap
-
-
+![Home Page View](HomePage.png)
+![The Navbar](NavBar.png)
+![Login/Sign Up menu](Login.png)
+![Created Profile view](Profile.png)
+![Pricing Menu](Pricing.png)
+![Trainin Schedule](Schedule.png)
 
 
 ### Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-Contact
+### Contact
+
 Project Link: https://github.com/your_username_/Average_Joes_2.0 
 Brandon Mullins-https://github.com/WebDevMullins 
 Clayton Guerrero-https://github.com/clayguerrero 
@@ -51,5 +58,6 @@ Drew Ledford-https://github.com/Drew-Odinson
 Trinidad Gaytan-https://github.com/tgaytan
 Beluchi Igboanugo- https://github.com/BeluchiIgbo
 
-Acknowledgements
+### Acknowledgements
+
 Choose an Open Source License GitHub Pages Heroku
