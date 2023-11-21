@@ -1,10 +1,8 @@
-const router = require('express').Router();
-const userRoutes = require('./userRoutes');
-const membershipRoutes = require('./membershipRoutes');
-const scheduleRoutes = require('./scheduleRoutes');
+const router = require('express').Router()
+const userRoutes = require('./userRoutes')
+const membershipRoutes = require('./membershipRoutes')
 
-router.use('/users', userRoutes);
-router.use('/membership', membershipRoutes);
-router.use('/schedule', scheduleRoutes);
+router.use('/users', userRoutes)
+router.use('/membership', membershipRoutes)
 
-module.exports = router;
+module.exports = router

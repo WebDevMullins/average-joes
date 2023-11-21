@@ -1,4 +1,4 @@
-<html lang='en' class='dark'>
+<html lang='en'>
 
   <head>
     <meta charset="UTF-8" />
@@ -9,25 +9,31 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"
       rel="stylesheet"
     />
+    {{!-- Dark mode switcher --}}
+    <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+</script>
   </head>
-  <body class='bg-gray-900 text-white flex flex-col h-screen justify-between'>
+  <body class='bg-gray-300 text-gray-900 dark:text-gray-300 dark:bg-gray-900 flex flex-col justify-between'>
       {{> navbar}}
     <main class='mb-auto'>
       {{{body}}}
     </main>
-    {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
-    {{/if}}
-    <footer class="grid grid-cols-3">
-      <div class="home"></div>
-      <div class="join"></div>
-      <div class="policy"></div>
-    </footer>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"
-    ></script>
+
+    {{!-- Scripts --}}
+    <script src="/js/index.js"></script>
+    
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
+
+    {{!-- Flowbite --}}
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"
+    ></script>
   </body>
 </html>

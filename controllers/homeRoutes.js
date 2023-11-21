@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { MembershipPlan, MembershipTier, Trainer, Member, User } = require('../models')
+const { MembershipPlan, MembershipTier, Trainer, Member, User, Schedule } = require('../models')
 const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
@@ -103,6 +103,22 @@ router.get('/membership', withAuth, async (req, res) => {
 	} catch (err) {
 		// Handle server error
 		res.status(500).json(err)
+	}
+})
+
+router.get('/schedule', async (req, res) => {
+	try {
+		const scheduleData = await Schedule.findAll({
+			include: [
+				{
+					model: Trainer
+				}
+			]
+		})
+		const schedule = scheduleData.map((tier) => tier.get({ plain: true }))
+		res.render('schedule', { schedule, logged_in: req.session.logged_in, is_member: req.session.is_member })
+	} catch (err) {
+		res.status(400).json(err)
 	}
 })
 
