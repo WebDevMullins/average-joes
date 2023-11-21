@@ -3,8 +3,10 @@ const sequelize = require('../config/connection')
 
 class Trainer extends Model {}
 
+// Define the model
 Trainer.init(
 	{
+		// Define columns with their data types, constraints, and validations
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

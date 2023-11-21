@@ -1,14 +1,16 @@
 const router = require('express').Router()
 const { User, Member } = require('../../models')
 
+// Route: User signup
 router.post('/signup', async (req, res) => {
 	try {
+		// Create a new user in the db
 		const dbUserData = await User.create({
 			name: req.body.name,
 			email: req.body.email,
 			password: req.body.password
 		})
-
+		// Update session info for the logged-in user
 		req.session.user_email = req.body.email
 		req.session.logged_in = true
 
@@ -21,28 +23,28 @@ router.post('/signup', async (req, res) => {
 	}
 })
 
+// Route: User login
 router.post('/login', async (req, res) => {
 	try {
+		// Find user based on the provided email
 		const userData = await User.findByPk(req.body.email)
 		if (!userData) {
 			res.status(400).json({ message: 'Incorrect email or password, please try again' })
 			return
 		}
-
+		// Check if the provided password is valid
 		const validPassword = await userData.checkPassword(req.body.password)
 
 		if (!validPassword) {
 			res.status(400).json({ message: 'Incorrect email or password, please try again' })
 			return
 		}
-
+		// Check if user is also a member and update session accordingly
 		const member = await Member.findByPk(req.body.email)
-
 		if (member && member.membershipStatus) {
 			req.session.is_member = true
 		}
-		console.log(req.session.is_member)
-
+		// Update session info for the logged-in user
 		req.session.user_email = userData.email
 		req.session.logged_in = true
 
@@ -54,31 +56,15 @@ router.post('/login', async (req, res) => {
 	}
 })
 
+// Route: User logout
 router.post('/logout', (req, res) => {
+	// If logged in, destroy the session
 	if (req.session.logged_in) {
 		req.session.destroy(() => {
 			res.status(204).end()
 		})
 	} else {
 		res.status(404).end()
-	}
-})
-
-router.put('/', async (req, res) => {
-	try {
-		const userData = await User.update(
-			{ plan_id: req.body.plan_id, tier_id: req.body.tier_id },
-			{ where: { id: req.session.user_id } }
-		)
-
-		if (!userData) {
-			res.status(404).json({ message: 'No user found with this id' })
-			return
-		}
-
-		res.status(200).json(userData)
-	} catch (err) {
-		res.status(500).json(err)
 	}
 })
 
