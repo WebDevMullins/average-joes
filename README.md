@@ -58,6 +58,7 @@ Rename the `.env.EXAMPLE` file to `.env`. Update with your credentials.
 DB_NAME=databasename #replace with the database name
 DB_USER=yourusername # replace with your user name
 DB_PASSWORD=yourpassword # replace with your password
+SESSION_SECRET='' # secret string
 ```
 
 ### Databse Setup
