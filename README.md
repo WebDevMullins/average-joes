@@ -49,7 +49,7 @@ Brandon Mullins-https://github.com/WebDevMullins
 Clayton Guerrero-https://github.com/clayguerrero 
 Drew Ledford-https://github.com/Drew-Odinson 
 Trinidad Gaytan-https://github.com/tgaytan
-Beluchi Igboanugo- https://github.com/BeluchiIgbov
+Beluchi Igboanugo- https://github.com/BeluchiIgbo
 
 Acknowledgements
 Choose an Open Source License GitHub Pages Heroku

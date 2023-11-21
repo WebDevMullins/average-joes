@@ -1,21 +1,6 @@
 const router = require('express').Router()
-const { User } = require('../../models')
+const { User, Member } = require('../../models')
 
-router.post('/', async (req, res) => {
-	try {
-		const userData = await User.create(req.body)
-
-		req.session.user_id = userData.id
-		req.session.logged_in = true
-
-		req.session.save(() => {
-			res.status(200).json(userData)
-		})
-	} catch (err) {
-		res.status(400).json(err)
-	}
-})
-///
 router.post('/signup', async (req, res) => {
 	try {
 		const dbUserData = await User.create({
@@ -24,9 +9,10 @@ router.post('/signup', async (req, res) => {
 			password: req.body.password
 		})
 
-		req.session.save(() => {
-			req.session.logged_in = true
+		req.session.user_email = req.body.email
+		req.session.logged_in = true
 
+		req.session.save(() => {
 			res.status(200).json(dbUserData)
 		})
 	} catch (err) {
@@ -37,19 +23,27 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
 	try {
-		const userData = await User.findOne({ where: { email: req.body.email } })
+		const userData = await User.findByPk(req.body.email)
 		if (!userData) {
 			res.status(400).json({ message: 'Incorrect email or password, please try again' })
 			return
 		}
 
 		const validPassword = await userData.checkPassword(req.body.password)
-		console.log(validPassword)
+
 		if (!validPassword) {
 			res.status(400).json({ message: 'Incorrect email or password, please try again' })
 			return
 		}
-		req.session.user_id = userData.id
+
+		const member = await Member.findByPk(req.body.email)
+
+		if (member && member.membershipStatus) {
+			req.session.is_member = true
+		}
+		console.log(req.session.is_member)
+
+		req.session.user_email = userData.email
 		req.session.logged_in = true
 
 		req.session.save(() => {
@@ -73,7 +67,7 @@ router.post('/logout', (req, res) => {
 router.put('/', async (req, res) => {
 	try {
 		const userData = await User.update(
-			{ membership_plan_id: req.body.plan_id, membership_tier_id: req.body.tier_id },
+			{ plan_id: req.body.plan_id, tier_id: req.body.tier_id },
 			{ where: { id: req.session.user_id } }
 		)
 
