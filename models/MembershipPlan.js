@@ -3,8 +3,10 @@ const sequelize = require('../config/connection')
 
 class MembershipPlan extends Model {}
 
+// Define the model
 MembershipPlan.init(
 	{
+		// Define columns with their data types, constraints, and validations
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

@@ -5,6 +5,7 @@ class MembershipTier extends Model {}
 
 MembershipTier.init(
 	{
+		// Define columns with their data types, constraints, and validations
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

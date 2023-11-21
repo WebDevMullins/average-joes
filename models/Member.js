@@ -3,13 +3,10 @@ const sequelize = require('../config/connection')
 
 class Member extends Model {}
 
+// Define the model
 Member.init(
 	{
-		// id: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: false,
-		// 	autoIncrement: true
-		// },
+		// Define columns with their data types, constraints, and validations
 		f_name: {
 			type: DataTypes.STRING,
 			allowNull: false,

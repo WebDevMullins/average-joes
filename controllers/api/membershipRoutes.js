@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const { MembershipPlan, Member } = require('../../models')
 
+// Route: Create a new member
 router.post('/', async (req, res) => {
-	// console.log(membershipStatus)
 	try {
+		// Create a new member with data from the request body
 		const memberData = await Member.create({
 			f_name: req.body.fName,
 			l_name: req.body.lName,
@@ -17,7 +18,7 @@ router.post('/', async (req, res) => {
 			plan_id: req.body.planId,
 			tier_id: req.body.tierId
 		})
-
+		// Update session info to indicate user is now a member
 		req.session.is_member = true
 		req.session.save(() => {
 			res.status(200).json(memberData)
@@ -28,8 +29,10 @@ router.post('/', async (req, res) => {
 	}
 })
 
+// Route: Get all membership plans
 router.get('/plans', async (req, res) => {
 	try {
+		// Get all membership plans
 		const planData = await MembershipPlan.findAll()
 		res.status(200).json(planData)
 	} catch (err) {

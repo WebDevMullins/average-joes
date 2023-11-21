@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { MembershipPlan, MembershipTier, Trainer, Member, User, Schedule } = require('../models')
 const withAuth = require('../utils/auth')
 
+// Route: Render the homepage
 router.get('/', async (req, res) => {
 	try {
 		res.render('homepage', {
@@ -13,6 +14,7 @@ router.get('/', async (req, res) => {
 	}
 })
 
+// Route: Render the signup page
 router.get('/signup', async (req, res) => {
 	try {
 		res.render('signup', {
@@ -23,10 +25,10 @@ router.get('/signup', async (req, res) => {
 	}
 })
 
-// Use withAuth middleware to prevent access to route
+// Render the member profile page (requires auth)
 router.get('/profile', withAuth, async (req, res) => {
 	try {
-		// Find the logged in user based on the session ID
+		// Find the logged in user based on user email
 		const userData = await Member.findByPk(req.session.user_email, {
 			attributes: { exclude: ['id'] },
 			include: [
@@ -52,6 +54,7 @@ router.get('/profile', withAuth, async (req, res) => {
 	}
 })
 
+// Route: Render the login page
 router.get('/login', (req, res) => {
 	// If the user is already logged in, redirect the request to another route
 	if (req.session.logged_in) {
@@ -62,8 +65,10 @@ router.get('/login', (req, res) => {
 	res.render('login')
 })
 
+// Route: Render the pricing page
 router.get('/pricing', async (req, res) => {
 	try {
+		// Get all membership tiers with trainers
 		const tierData = await MembershipTier.findAll({
 			include: [
 				{
@@ -83,6 +88,7 @@ router.get('/pricing', async (req, res) => {
 	}
 })
 
+// Route: Render the membership page (requires auth)
 router.get('/membership', withAuth, async (req, res) => {
 	try {
 		// Get all membership plans
@@ -106,8 +112,10 @@ router.get('/membership', withAuth, async (req, res) => {
 	}
 })
 
+// Route: Render the schedule page
 router.get('/schedule', async (req, res) => {
 	try {
+		// Get all schedules with trainers
 		const scheduleData = await Schedule.findAll({
 			include: [
 				{
